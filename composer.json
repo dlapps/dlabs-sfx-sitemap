@@ -1,0 +1,35 @@
+{
+  "name": "dlapps/sitemap-bundle",
+  "homepage": "https://github.com/dlapps/sitemap-bundle",
+  "description": "Provides simple integration for generating sitemaps",
+  "type": "symfony-bundle",
+  "require": {
+    "php": "^7.1",
+    "symfony/symfony": "^3.2",
+    "jms/serializer-bundle": "^1.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "DL\\SitemapBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DL\\SitemapBundle\\Tests\\": "tests/"
+    }
+  },
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Petre Pătrașc",
+      "email": "petre@dreamlabs.ro",
+      "homepage": "https://www.dreamlabs.ro"
+    }
+  ],
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  }
+}
