@@ -1,1 +1,10 @@
 services:
+  sitemap_resource_validator:
+    class: DL\SitemapBundle\Service\SitemapResourceValidator
+    public: false
+
+  sitemap_resource_builder:
+    class: DL\SitemapBundle\Service\SitemapResourceBuilder
+    arguments:
+      - "@sitemap_resource_validator"
+      - "%sitemap_location_prefix%"

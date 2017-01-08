@@ -22,7 +22,9 @@ class DLSitemapExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $this->processConfiguration(new DLSitemapConfiguration, $configs);
+        $configs = $this->processConfiguration(new DLSitemapConfiguration, $configs);
+        $container->setParameter('sitemap_location_prefix', $configs['location_prefix']);
+
         $this->processServiceDefinition($container);
     }
 

@@ -20,7 +20,14 @@ class DLSitemapConfiguration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder;
-        $treeBuilder->root('dl_sitemap');
+        $rootNode = $treeBuilder->root('dl_sitemap');
+
+        $rootNode
+            ->children()
+                ->scalarNode('location_prefix')
+                    ->defaultValue('')
+                    ->end()
+            ->end();
 
         return $treeBuilder;
     }
