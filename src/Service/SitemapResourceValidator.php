@@ -25,34 +25,13 @@ class SitemapResourceValidator
      */
     public function validate(SitemapResource $resource): bool
     {
-        if ('' === trim($resource->getTitle())) {
-            throw new SitemapException('No title provided for the sitemap resource');
-        }
-
-        if ('' === trim($resource->getLocation())) {
-            throw new SitemapException('No location provided for the sitemap resource');
-        }
-
-        if ('' === trim($resource->getChangeFrequency())) {
-            throw new SitemapException('No change frequency provided for the sitemap resource');
-        }
-
-        if (-1 == $resource->getPriority()) {
-            throw new SitemapException('No priority provided for the sitemap resource');
-        }
-
-        if ($resource->getPriority() < 0.0 || $resource->getPriority() > 1.0) {
-            throw new SitemapException("Sitemap resource priority should be between 0.0 and 1.0." .
-                " {$resource->getPriority()} provided.");
-        }
-
-        if (false === in_array($resource->getChangeFrequency(), $this->getValidChangeFrequencies())) {
-            throw new SitemapException("Invalid sitemap change frequency provided: {$resource->getChangeFrequency()}");
-        }
-
-        if (false === filter_var($resource->getLocation(), FILTER_VALIDATE_URL)) {
-            throw new SitemapException("Invalid absolute location: {$resource->getLocation()}");
-        }
+        $this->validateEmptyTitle($resource);
+        $this->validateEmptyLocation($resource);
+        $this->validateEmptyChangeFrequency($resource);
+        $this->validateEmptyPriority($resource);
+        $this->validateInvalidPriority($resource);
+        $this->validateInvalidChangeFrequency($resource);
+        $this->validateInvalidLocation($resource);
 
         return true;
     }
@@ -73,5 +52,90 @@ class SitemapResourceValidator
             ChangeFrequencyEnum::YEARLY,
             ChangeFrequencyEnum::NEVER,
         ];
+    }
+
+    /**
+     * @param SitemapResource $resource
+     *
+     * @throws SitemapException
+     */
+    private function validateEmptyTitle(SitemapResource $resource): void
+    {
+        if ('' === trim($resource->getTitle())) {
+            throw new SitemapException('No title provided for the sitemap resource');
+        }
+    }
+
+    /**
+     * @param SitemapResource $resource
+     *
+     * @throws SitemapException
+     */
+    private function validateEmptyLocation(SitemapResource $resource): void
+    {
+        if ('' === trim($resource->getLocation())) {
+            throw new SitemapException('No location provided for the sitemap resource');
+        }
+    }
+
+    /**
+     * @param SitemapResource $resource
+     *
+     * @throws SitemapException
+     */
+    private function validateEmptyChangeFrequency(SitemapResource $resource): void
+    {
+        if ('' === trim($resource->getChangeFrequency())) {
+            throw new SitemapException('No change frequency provided for the sitemap resource');
+        }
+    }
+
+    /**
+     * @param SitemapResource $resource
+     *
+     * @throws SitemapException
+     */
+    private function validateEmptyPriority(SitemapResource $resource): void
+    {
+        if (-1 == $resource->getPriority()) {
+            throw new SitemapException('No priority provided for the sitemap resource');
+        }
+    }
+
+    /**
+     * @param SitemapResource $resource
+     *
+     * @throws SitemapException
+     */
+    private function validateInvalidPriority(SitemapResource $resource): void
+    {
+        if ($resource->getPriority() < 0.0 || $resource->getPriority() > 1.0) {
+            throw new SitemapException("Sitemap resource priority should be between 0.0 and 1.0." .
+                " {$resource->getPriority()} provided.");
+        }
+    }
+
+    /**
+     * @param SitemapResource $resource
+     *
+     * @throws SitemapException
+     */
+    private function validateInvalidChangeFrequency(SitemapResource $resource): void
+    {
+        if (false === in_array($resource->getChangeFrequency(), $this->getValidChangeFrequencies())) {
+            throw new SitemapException("Invalid sitemap change frequency provided: {$resource->getChangeFrequency()}");
+        }
+    }
+
+    /**
+     * @param SitemapResource $resource
+     *
+     * @throws SitemapException
+     */
+    private function validateInvalidLocation(SitemapResource $resource): void
+    {
+        if (false === filter_var($resource->getLocation(), FILTER_VALIDATE_URL)) {
+            throw new SitemapException("Invalid absolute location: {$resource->getLocation()}");
+        }
     }
 }
