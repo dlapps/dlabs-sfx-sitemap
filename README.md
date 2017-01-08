@@ -33,7 +33,7 @@ $bundles = [
 In order to generate a sitemap, you need to generate an instance of sitemap definition `DL\SitemapBundle\Definition\Sitemap`.
 This instance can then accept the individual sitemap resources that you would like to add via the `Sitemap::addResource()` method.
 
-In order to assist with the generation and validation of sitemaps, the `sitemap_resource_builder` service is exposed, and can be used as in the example below:
+In order to assist with the generation and validation of sitemap resources, the `sitemap_resource_builder` service is exposed, and can be used as in the example below:
 
 ``` php
 $container->get('sitemap_resource_builder')
@@ -45,9 +45,16 @@ $container->get('sitemap_resource_builder')
     ->build();
 ```
 
-The builder will automatically validate a new resource that is added to the Sitemap, and ensure that it is strictly valid.
+The builder will automatically validate a new resource that is added to the Sitemap, and ensure that:
 
-The builder also exposes a `->withRelativeLocation($location)` method, which can be used alongside the `location_prefix` configuration parameter in order to generate absolute routes, from relative URLs. Given a scenarion in which the `location_prefix` parameter is set to `https://example.com` calling `->withRelativeLocation('/article/test')` will generate the absolute URL `https://example.com//article/test`.  
+* All fields have been provided.
+* The priority is a float between 0 and 1.
+* The change frequency is a valid value.
+* An absolute URL has been provided for the location.
+
+The builder also exposes a `->withRelativeLocation($location)` method, which can be used alongside the `location_prefix` configuration parameter in order to generate absolute routes, from relative URLs. This feature is present in order to assist with possibly mismatching hostnames when proxying through an improperly configured load balancer. 
+
+Given a scenarion in which the `location_prefix` parameter is set to `https://example.com` calling `->withRelativeLocation('/article/test')` will generate the absolute URL `https://example.com//article/test`.  
 
 The `DL\SitemapBundle\Enum\ChangeFrequencyEnum` class can be used in order to define a strict change frequency. Possible values are:
 
@@ -88,7 +95,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details
 
 ## Security
 
-If you discover any security related issues, please email petre@dreamlabs.ro instead of using the issue tracker.
+If you discover any security related issues, please email petre [at] dreamlabs.ro instead of using the issue tracker.
 
 ## Credits
 
