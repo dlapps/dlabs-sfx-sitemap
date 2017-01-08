@@ -52,7 +52,7 @@ class SitemapResourceBuilder
     /**
      * @var SitemapResourceValidator
      */
-    protected $sitemapResourceValidator;
+    protected $validator;
 
     /**
      * The location prefix - used when creating resources
@@ -65,13 +65,13 @@ class SitemapResourceBuilder
     /**
      * SitemapResourceBuilder constructor.
      *
-     * @param SitemapResourceValidator $sitemapResourceValidator
+     * @param SitemapResourceValidator $validator
      * @param string                   $locationPrefix
      */
-    public function __construct(SitemapResourceValidator $sitemapResourceValidator, string $locationPrefix)
+    public function __construct(SitemapResourceValidator $validator, string $locationPrefix)
     {
-        $this->sitemapResourceValidator = $sitemapResourceValidator;
-        $this->locationPrefix           = $locationPrefix;
+        $this->validator      = $validator;
+        $this->locationPrefix = $locationPrefix;
         $this->clear();
     }
 
@@ -104,7 +104,7 @@ class SitemapResourceBuilder
         );
 
         $this->clear();
-        $this->sitemapResourceValidator->validate($resource);
+        $this->validator->validate($resource);
 
         return $resource;
     }
