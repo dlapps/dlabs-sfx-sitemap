@@ -10,7 +10,7 @@
     "sitemap.xml"
   ],
   "require": {
-    "php": "^7.1",
+    "php": "^7.0",
     "symfony/symfony": "^3.2",
     "jms/serializer-bundle": "^1.1"
   },

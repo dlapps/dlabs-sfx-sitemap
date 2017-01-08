@@ -20,7 +20,7 @@ class DLSitemapExtension extends Extension
     /**
      * @inheritDoc
      */
-    public function load(array $configs, ContainerBuilder $container): void
+    public function load(array $configs, ContainerBuilder $container)
     {
         $configs = $this->processConfiguration(new DLSitemapConfiguration, $configs);
         $container->setParameter('sitemap_location_prefix', $configs['location_prefix']);
@@ -33,7 +33,7 @@ class DLSitemapExtension extends Extension
      *
      * @param ContainerBuilder $container
      */
-    private function processServiceDefinition(ContainerBuilder $container): void
+    private function processServiceDefinition(ContainerBuilder $container)
     {
         $definitionFiles = [
             'services.yml',

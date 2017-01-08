@@ -39,7 +39,7 @@ class SitemapResourceBuilderTest extends TestCase
         $this->builder = new SitemapResourceBuilder($this->validator, 'https://test.example.com');
     }
 
-    public function testGivenThatTheBuilderHasOnlyBeenInstantiatedThenAllOfItsPropertiesWillContainDefaultValues(): void
+    public function testGivenThatTheBuilderHasOnlyBeenInstantiatedThenAllOfItsPropertiesWillContainDefaultValues()
     {
         $this->assertAttributeEquals('', 'title', $this->builder);
         $this->assertAttributeEquals('', 'location', $this->builder);
@@ -48,21 +48,21 @@ class SitemapResourceBuilderTest extends TestCase
         $this->assertAttributeEquals(-1, 'priority', $this->builder);
     }
 
-    public function testGivenThatAnAbsoluteLocationIsProvidedThenTheLocationPrefixWillNotBeAddedToTheFinalValue(): void
+    public function testGivenThatAnAbsoluteLocationIsProvidedThenTheLocationPrefixWillNotBeAddedToTheFinalValue()
     {
         $this->builder->withAbsoluteLocation('https://test2.example.com');
 
         $this->assertAttributeEquals('https://test2.example.com', 'location', $this->builder);
     }
 
-    public function testGivenThatARelativeLocationIsProvidedThenTheLocationPrefixWillBeAddedToTheFinalValue(): void
+    public function testGivenThatARelativeLocationIsProvidedThenTheLocationPrefixWillBeAddedToTheFinalValue()
     {
         $this->builder->withRelativeLocation('/article/test-article');
 
         $this->assertAttributeEquals('https://test.example.com/article/test-article', 'location', $this->builder);
     }
 
-    public function testGivenThatAllFieldsAllProvidedThenAllOfThemWillBeSetInTheBuilderInstance(): void
+    public function testGivenThatAllFieldsAllProvidedThenAllOfThemWillBeSetInTheBuilderInstance()
     {
         $lastModified = new \DateTime;
         $this->builder
@@ -79,7 +79,7 @@ class SitemapResourceBuilderTest extends TestCase
         $this->assertAttributeEquals(1.0, 'priority', $this->builder);
     }
 
-    public function testGivenThatAllFieldsAreProvidedToTheBuilderThenTheyWillBeUsedToConstructANewInstanceThatWillBePassedToTheValidator(): void
+    public function testGivenThatAllFieldsAreProvidedToTheBuilderThenTheyWillBeUsedToConstructANewInstanceThatWillBePassedToTheValidator()
     {
         $this->validator
             ->expects($this->once())
@@ -103,7 +103,7 @@ class SitemapResourceBuilderTest extends TestCase
         $this->assertEquals(1.0, $resource->getPriority());
     }
 
-    public function testGivenThatANewInstanceHasBeenBuiltThenTheBuilderWillResetToTheDefaultFieldValues(): void
+    public function testGivenThatANewInstanceHasBeenBuiltThenTheBuilderWillResetToTheDefaultFieldValues()
     {
         $this->validator
             ->expects($this->once())

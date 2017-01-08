@@ -66,7 +66,7 @@ class Sitemap
      *
      * @throws SitemapException
      */
-    protected function validateSitemapResources(array $sitemapResources): void
+    protected function validateSitemapResources(array $sitemapResources)
     {
         foreach ($sitemapResources as $resource) {
             if (false === $resource instanceof SitemapResource) {

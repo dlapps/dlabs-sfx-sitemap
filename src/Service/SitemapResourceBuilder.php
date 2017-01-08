@@ -79,7 +79,7 @@ class SitemapResourceBuilder
      * Clear all of the builder properties to ensure a default state
      * between multiple executions.
      */
-    private function clear(): void
+    private function clear()
     {
         $this->title           = '';
         $this->location        = '';

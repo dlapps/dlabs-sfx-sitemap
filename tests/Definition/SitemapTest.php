@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  */
 class SitemapTest extends TestCase
 {
-    public function testGivenThatADefaultSitemapIsGeneratedThenItShallContainNoAttachedResources(): void
+    public function testGivenThatADefaultSitemapIsGeneratedThenItShallContainNoAttachedResources()
     {
         $sitemap   = new Sitemap;
         $resources = $sitemap->getResources();
@@ -26,7 +26,7 @@ class SitemapTest extends TestCase
         $this->assertCount(0, $resources);
     }
 
-    public function testGivenThatASitemapIsGeneratedFromAnArrayOfInvalidResourcesThenAnExceptionWillBeThrown(): void
+    public function testGivenThatASitemapIsGeneratedFromAnArrayOfInvalidResourcesThenAnExceptionWillBeThrown()
     {
         $resources = [
             'invalid-test',
@@ -40,7 +40,7 @@ class SitemapTest extends TestCase
         new Sitemap($resources);
     }
 
-    public function testGivenThatASitemapIsGeneratedFromAnArrayOfValidResourcesThenTheyWillBeCorrectlyAttachedToTheResource(): void
+    public function testGivenThatASitemapIsGeneratedFromAnArrayOfValidResourcesThenTheyWillBeCorrectlyAttachedToTheResource()
     {
         $sitemapResource = new SitemapResource(
             'Test Title',
@@ -58,7 +58,7 @@ class SitemapTest extends TestCase
         $this->assertEquals($resources, $sitemap->getResources());
     }
 
-    public function testGivenThatASitemapResourceIsAttachedToASitemapCollectionThenItWillBeRetrievable(): void
+    public function testGivenThatASitemapResourceIsAttachedToASitemapCollectionThenItWillBeRetrievable()
     {
         $sitemapResource = new SitemapResource(
             'Test Title',
@@ -81,7 +81,7 @@ class SitemapTest extends TestCase
      *
      * @dataProvider invalidTypeDataProvider
      */
-    public function testGivenThatAnInvalidTypeIsAttachedToASitemapCollectionThenAnExceptionWillBeThrown($sitemapResource): void
+    public function testGivenThatAnInvalidTypeIsAttachedToASitemapCollectionThenAnExceptionWillBeThrown($sitemapResource)
     {
         $this->expectException(\TypeError::class);
 

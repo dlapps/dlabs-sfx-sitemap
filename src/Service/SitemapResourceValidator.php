@@ -59,7 +59,7 @@ class SitemapResourceValidator
      *
      * @throws SitemapException
      */
-    private function validateEmptyTitle(SitemapResource $resource): void
+    private function validateEmptyTitle(SitemapResource $resource)
     {
         if ('' === trim($resource->getTitle())) {
             throw new SitemapException('No title provided for the sitemap resource');
@@ -71,7 +71,7 @@ class SitemapResourceValidator
      *
      * @throws SitemapException
      */
-    private function validateEmptyLocation(SitemapResource $resource): void
+    private function validateEmptyLocation(SitemapResource $resource)
     {
         if ('' === trim($resource->getLocation())) {
             throw new SitemapException('No location provided for the sitemap resource');
@@ -83,7 +83,7 @@ class SitemapResourceValidator
      *
      * @throws SitemapException
      */
-    private function validateEmptyChangeFrequency(SitemapResource $resource): void
+    private function validateEmptyChangeFrequency(SitemapResource $resource)
     {
         if ('' === trim($resource->getChangeFrequency())) {
             throw new SitemapException('No change frequency provided for the sitemap resource');
@@ -95,7 +95,7 @@ class SitemapResourceValidator
      *
      * @throws SitemapException
      */
-    private function validateEmptyPriority(SitemapResource $resource): void
+    private function validateEmptyPriority(SitemapResource $resource)
     {
         if (-1 == $resource->getPriority()) {
             throw new SitemapException('No priority provided for the sitemap resource');
@@ -107,7 +107,7 @@ class SitemapResourceValidator
      *
      * @throws SitemapException
      */
-    private function validateInvalidPriority(SitemapResource $resource): void
+    private function validateInvalidPriority(SitemapResource $resource)
     {
         if ($resource->getPriority() < 0.0 || $resource->getPriority() > 1.0) {
             throw new SitemapException("Sitemap resource priority should be between 0.0 and 1.0." .
@@ -120,7 +120,7 @@ class SitemapResourceValidator
      *
      * @throws SitemapException
      */
-    private function validateInvalidChangeFrequency(SitemapResource $resource): void
+    private function validateInvalidChangeFrequency(SitemapResource $resource)
     {
         if (false === in_array($resource->getChangeFrequency(), $this->getValidChangeFrequencies())) {
             throw new SitemapException("Invalid sitemap change frequency provided: {$resource->getChangeFrequency()}");
@@ -132,7 +132,7 @@ class SitemapResourceValidator
      *
      * @throws SitemapException
      */
-    private function validateInvalidLocation(SitemapResource $resource): void
+    private function validateInvalidLocation(SitemapResource $resource)
     {
         if (false === filter_var($resource->getLocation(), FILTER_VALIDATE_URL)) {
             throw new SitemapException("Invalid absolute location: {$resource->getLocation()}");

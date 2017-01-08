@@ -37,7 +37,7 @@ class DLSitemapExtensionTest extends TestCase
         $this->extension = new DLSitemapExtension;
     }
 
-    public function testGivenThatTheExtensionIsLoadedThenTheLocationPrefixWillBeInjectedFromTheSemanticConfiguration(): void
+    public function testGivenThatTheExtensionIsLoadedThenTheLocationPrefixWillBeInjectedFromTheSemanticConfiguration()
     {
         $configs = [
             'dl_sitemap' => [

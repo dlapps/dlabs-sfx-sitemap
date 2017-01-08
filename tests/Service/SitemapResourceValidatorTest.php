@@ -30,7 +30,7 @@ class SitemapResourceValidatorTest extends TestCase
         $this->validator = new SitemapResourceValidator;
     }
 
-    public function testGivenThatAValidSitemapResourceIsProvidedThenTheValidatorWillReturnAPositiveResponse(): void
+    public function testGivenThatAValidSitemapResourceIsProvidedThenTheValidatorWillReturnAPositiveResponse()
     {
         $resource = new SitemapResource(
             'Test Title',
@@ -46,7 +46,7 @@ class SitemapResourceValidatorTest extends TestCase
         $this->assertTrue($result);
     }
 
-    public function testGivenThatNoTitleIsProvidedThenAnExceptionWillBeThrown(): void
+    public function testGivenThatNoTitleIsProvidedThenAnExceptionWillBeThrown()
     {
         $resource = new SitemapResource(
             '',
@@ -62,7 +62,7 @@ class SitemapResourceValidatorTest extends TestCase
         $this->validator->validate($resource);
     }
 
-    public function testGivenThatNoLocationIsProvidedThenAnExceptionWillBeThrown(): void
+    public function testGivenThatNoLocationIsProvidedThenAnExceptionWillBeThrown()
     {
         $resource = new SitemapResource(
             'Test Title',
@@ -78,7 +78,7 @@ class SitemapResourceValidatorTest extends TestCase
         $this->validator->validate($resource);
     }
 
-    public function testGivenThatNoChangeFrequencyIsProvidedThenAnExceptionWillBeThrown(): void
+    public function testGivenThatNoChangeFrequencyIsProvidedThenAnExceptionWillBeThrown()
     {
         $resource = new SitemapResource(
             'Test Title',
@@ -94,7 +94,7 @@ class SitemapResourceValidatorTest extends TestCase
         $this->validator->validate($resource);
     }
 
-    public function testGivenThatNoPriorityIsProvidedThenAnExceptionWillBeThrown(): void
+    public function testGivenThatNoPriorityIsProvidedThenAnExceptionWillBeThrown()
     {
         $resource = new SitemapResource(
             'Test Title',
@@ -110,7 +110,7 @@ class SitemapResourceValidatorTest extends TestCase
         $this->validator->validate($resource);
     }
 
-    public function testGivenThatANegativePriorityIsProvidedThenAnExceptionWillBeThrown(): void
+    public function testGivenThatANegativePriorityIsProvidedThenAnExceptionWillBeThrown()
     {
         $resource = new SitemapResource(
             'Test Title',
@@ -126,7 +126,7 @@ class SitemapResourceValidatorTest extends TestCase
         $this->validator->validate($resource);
     }
 
-    public function testGivenThatAPriorityOfAboveOneIsProvidedThenAnExceptionWillBeThrown(): void
+    public function testGivenThatAPriorityOfAboveOneIsProvidedThenAnExceptionWillBeThrown()
     {
         $resource = new SitemapResource(
             'Test Title',
@@ -142,7 +142,7 @@ class SitemapResourceValidatorTest extends TestCase
         $this->validator->validate($resource);
     }
 
-    public function testGivenThatAnInvalidChangeFrequencyIsProvidedThenAnExceptionWillBeThrown(): void
+    public function testGivenThatAnInvalidChangeFrequencyIsProvidedThenAnExceptionWillBeThrown()
     {
         $resource = new SitemapResource(
             'Test Title',
@@ -163,7 +163,7 @@ class SitemapResourceValidatorTest extends TestCase
      *
      * @dataProvider invalidLocationUrlDataProvider
      */
-    public function testGivenThatAnInvalidLocationUrlIsProvidedThenAnExceptionWillBeThrown(string $invalidUrl): void
+    public function testGivenThatAnInvalidLocationUrlIsProvidedThenAnExceptionWillBeThrown(string $invalidUrl)
     {
         $resource = new SitemapResource(
             'Test Title',

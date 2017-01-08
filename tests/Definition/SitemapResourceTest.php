@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 class SitemapResourceTest extends TestCase
 {
-    public function testGivenThatASitemapResourceIsInstantiatedThenAllOfItsFieldsWillBeMappedCorrectly(): void
+    public function testGivenThatASitemapResourceIsInstantiatedThenAllOfItsFieldsWillBeMappedCorrectly()
     {
         $lastModifiedTime = new \DateTime;
         $resource         = new SitemapResource(

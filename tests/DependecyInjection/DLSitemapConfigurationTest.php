@@ -29,7 +29,7 @@ class DLSitemapConfigurationTest extends TestCase
         $this->sitemapConfiguration = new DLSitemapConfiguration;
     }
 
-    public function testGivenThatTheTreeIsGeneratedThenASetOfSemanticConfigurationEntriesWillBeCustomisable(): void
+    public function testGivenThatTheTreeIsGeneratedThenASetOfSemanticConfigurationEntriesWillBeCustomisable()
     {
         /** @var ArrayNode $tree */
         $tree     = $this->sitemapConfiguration->getConfigTreeBuilder()->buildTree();
@@ -38,7 +38,7 @@ class DLSitemapConfigurationTest extends TestCase
         $this->assertArrayHasKey('location_prefix', $children);
     }
 
-    public function testGivenThatTheTreeIsGeneratedThenTheLocationPrefixWillContainADefaultEmptyValue(): void
+    public function testGivenThatTheTreeIsGeneratedThenTheLocationPrefixWillContainADefaultEmptyValue()
     {
         /** @var ArrayNode $tree */
         $tree     = $this->sitemapConfiguration->getConfigTreeBuilder()->buildTree();
